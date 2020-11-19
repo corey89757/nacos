@@ -14,25 +14,25 @@
  * limitations under the License.
  */
 
-syntax = "proto3";
+package com.alibaba.nacos.api.naming.listener;
 
-option java_multiple_files = true;
-option java_package = "com.alibaba.nacos.consistency.entity";
+import java.util.concurrent.Executor;
 
-//Deprecated
-message Log {
-  string group = 1;
-  string key = 2;
-  bytes data = 3;
-  string type = 4;
-  string operation = 5;
-  map<string, string> extendInfo = 6;
+/**
+ * Abstract event listener, to support handle event by user custom executor.
+ *
+ * @author horizonzy
+ * @since 1.4.1
+ */
+public abstract class AbstractEventListener implements EventListener {
+    
+    /**
+     * Get executor for execute this receive.
+     *
+     * @return Executor
+     */
+    public Executor getExecutor() {
+        return null;
+    }
+    
 }
-
-//Deprecated
-message GetRequest {
-  string group = 1;
-  bytes data = 2;
-  map<string, string> extendInfo = 3;
-}
-
